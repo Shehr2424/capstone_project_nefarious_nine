@@ -1,6 +1,6 @@
 import { getAuth, sendPasswordResetEmail, signInWithEmailAndPassword, signOut, onAuthStateChanged, createUserWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/9.6.6/firebase-auth.js';
 import * as FirebaseController from './firebase_controller.js';
-
+import * as Auth from "../controller/firebase_auth.js";
 import { User } from '../model/user.js'
 import * as Elements from '../view/elements.js'
 import * as Utilities from '../view/utilities.js'
@@ -59,11 +59,13 @@ export function addEventListeners() {
             const email = emailAddress;
             const decksStudying = [];
             const coins = 0;
+            const pet = '';
 
             const newUserModel = new User({
                 email,
                 decksStudying,
-                coins
+                coins,
+                pet,
             });
 
             // Creates user Auth Account AND adds user account to users collections
@@ -74,8 +76,9 @@ export function addEventListeners() {
             });
 
             console.log("ADDING USER TO FIRESTORE");
-            firebase.firestore().collection(Constants.collectionName.USERS).doc(uid).set(newUserModel.serialize());
+            await firebase.firestore().collection(Constants.collectionName.USERS).doc(uid).set(newUserModel.serialize());
             console.log("ADDED USER TO FIRESTORE");
+            console.log(Auth.currentUser.uid);
       
             // Account successfully created from here
             e.target.reset();

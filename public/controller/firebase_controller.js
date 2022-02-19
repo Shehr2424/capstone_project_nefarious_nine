@@ -459,4 +459,38 @@ export async function updateCoins(uid, coins) {
     await firebase.firestore().collection(Constant.collectionName.USERS).doc(uid)
     .update({ 'coins': coins });
 }
+//============================================================================//
 
+//============================================================================//
+// UPDATE USER PET
+//============================================================================//
+
+export async function updatePet(uid) {
+    let pet = await firebase.firestore()
+    .collection(Constant.collectionName.USERS)
+    .doc(uid)
+    .get();
+    
+
+}
+//============================================================================//
+
+//============================================================================//
+// GET USER PET
+//============================================================================//
+
+export async function getPet(uid) {
+    const ref = await firebase.firestore()
+        .collection(Constant.collectionName.USERS)
+        .doc(uid); 
+    let pet;
+    await ref.get()
+        .then((doc) => {
+            const user = User.deserialize(doc.data());
+            pet = user.pet;
+        }).catch((error) => {
+            console.log("Error getting document:", error);
+        });
+    return pet;
+}
+//============================================================================//

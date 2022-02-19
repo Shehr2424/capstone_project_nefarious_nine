@@ -55,6 +55,10 @@ export const formSearchDeck = document.getElementById('form-search-deck');
 export const formResetPassword = document.getElementById('form-reset-password');
 //============================================================================//
 
+//PET ADOPTION
+//============================================================================//
+export const formPomodoption = document.getElementById('form-pomodoption');
+//============================================================================//
 
 // MODALS
 //============================================================================//
@@ -72,6 +76,7 @@ export const modalSignIn = new bootstrap.Modal(document.getElementById('modal-si
 export const modalCreateAFlashCard = new bootstrap.Modal(document.getElementById('modal-create-a-flashcard'));
 export const modalCreateAccount = new bootstrap.Modal(document.getElementById('modal-create-account', { backdrop: 'static' }));
 export const modalCreateDeck = new bootstrap.Modal(document.getElementById('create-deck-modal'));
+export const modalPomodoption = new bootstrap.Modal(document.getElementById('modal-pomodoption'), { backdrop: 'static' });
 export const modalResetPassword = new bootstrap.Modal(document.getElementById('modal-reset-password'));
 export const modalDeleteFlashcard = new bootstrap.Modal(document.getElementById('modal-delete-a-flashcard', { backdrop: 'static' }));
 
