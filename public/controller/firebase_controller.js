@@ -465,12 +465,11 @@ export async function updateCoins(uid, coins) {
 // UPDATE USER PET
 //============================================================================//
 
-export async function updatePet(uid) {
-    let pet = await firebase.firestore()
+export async function updatePet(uid, updatedPet) {
+    await firebase.firestore()
     .collection(Constant.collectionName.USERS)
     .doc(uid)
-    .get();
-    
+    .update({ 'pet': updatedPet});
 
 }
 //============================================================================//
@@ -479,7 +478,7 @@ export async function updatePet(uid) {
 // GET USER PET
 //============================================================================//
 
-export async function getPet(uid) {
+export async function getPetFieldFromUser(uid) {
     const ref = await firebase.firestore()
         .collection(Constant.collectionName.USERS)
         .doc(uid); 
